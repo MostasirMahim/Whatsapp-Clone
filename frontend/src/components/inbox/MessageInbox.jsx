@@ -30,7 +30,7 @@ function MessageInbox() {
       return;
     }
   }, [user, navigate]);
-
+  console.log(user)
   const { data: buble, isLoading } = useQuery({
     queryKey: ["buble", user._id],
     queryFn: async () => {
@@ -44,6 +44,7 @@ function MessageInbox() {
         return [];
       }
     },
+    enabled: !!user._id,
   });
   useEffect(() => {
     if (buble && buble.length > 0) {
