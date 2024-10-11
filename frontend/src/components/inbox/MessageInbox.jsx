@@ -102,6 +102,7 @@ function MessageInbox() {
     socket?.on("newMessage", (newMessage) => {
       addConversation(newMessage);
     });
+    console.log("Socket connected:", socket?.connected);
     return () => socket?.off("newMessage");
   }, [socket, addConversation]);
 
