@@ -7,7 +7,7 @@ app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["https://whatsup-mmco.onrender.com"],
+    origin: ["http://localhost:3000", "https://whatsup-mmco.onrender.com"],
     methods: ["GET", "POST"],
     credentials: true,
   },

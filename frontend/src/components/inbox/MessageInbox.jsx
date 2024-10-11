@@ -6,13 +6,13 @@ import { IoSendSharp } from "react-icons/io5";
 import Message from "./Message";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
-import useSocket from "../socket/Socket";
 import usersStore from "../zustand/store";
 import { extractDate } from "../utils/dateModify";
 import addImages from "../../assets/addImage.png";
 import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../utils/LoadingSpinner";
 import toast from "react-hot-toast";
+import { useSocket } from './../socket/Socket';
 
 function MessageInbox() {
   const { onlineUsers } = useSocket();
@@ -30,7 +30,7 @@ function MessageInbox() {
       return;
     }
   }, [user, navigate]);
-  console.log(user)
+  
   const { data: buble, isLoading } = useQuery({
     queryKey: ["buble", user._id],
     queryFn: async () => {

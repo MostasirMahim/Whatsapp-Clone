@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useQuery } from "@tanstack/react-query";
-import useSocket from "../socket/Socket";
 import usersStore from "../zustand/store";
 import { extractYear } from "../utils/dateModify";
 import { useNavigate, useParams } from "react-router-dom";
+import { useSocket } from './../socket/Socket';
 
 function ConverPeople({ user }) {
   const { setUser } = usersStore();

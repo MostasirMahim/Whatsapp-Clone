@@ -1,8 +1,15 @@
-import { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query"; // Ensure this is installed
+import { createContext, useContext, useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { io } from "socket.io-client";
 
-const useSocket = () => {
+// Create context
+const SocketContext = createContext();
+
+export const useSocket = () => {
+  return useContext(SocketContext);
+};
+
+export const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
   const { data: authUser } = useQuery({ queryKey: ["authUser"] });
@@ -28,9 +35,11 @@ const useSocket = () => {
         setSocket(null);
       }
     }
-  }, [authUser]); //if i add socket it maximum deep problem
+  }, [authUser]);
 
-  return { socket, onlineUsers };
+  return (
+    <SocketContext.Provider value={{ socket, onlineUsers }}>
+      {children}
+    </SocketContext.Provider>
+  );
 };
-
-export default useSocket;
