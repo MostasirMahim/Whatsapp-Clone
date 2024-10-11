@@ -20,18 +20,8 @@ const useSocket = () => {
       socketInstance.on("getOnlineUsers", (users) => {
         setOnlineUsers(users);
       });
-      socketInstance.on("connect", () => {
-        console.log("Socket connected:", socketInstance.id);
-      });
 
-      socketInstance.on("disconnect", () => {
-        console.log("Socket disconnected");
-      });
-
-      return () => {
-        socketInstance.off("getOnlineUsers");
-        socketInstance.close();
-      };
+      return () => socketInstance.close();
     } else {
       if (socket) {
         socket.close();
