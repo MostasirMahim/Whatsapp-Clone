@@ -5,7 +5,7 @@ const genToken = async (userId, res) => {
     expiresIn: "15d",
   });
 
-  res.cookie("jwt", token, {
+  res.cookie("jwtmsg", token, {
     maxAge: 1000 * 60 * 60 * 24 * 15,
     httpOnly: true,
     sameSite: "strict",

@@ -3,7 +3,7 @@ import User from "../models/user.model.js";
 
 const protectedRoutes = async (req, res, next) => {
   try {
-    const token = req.cookies.jwt;
+    const token = req.cookies.jwtmsg;
     if (!token) return res.status(400).json({ error: "Token not found" });
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
