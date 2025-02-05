@@ -82,10 +82,10 @@ function SettingBox() {
   };
   if (!authuser) return null;
   return (
-    <div className="max-h-screen">
+    <div className="max-h-screen h-screen overflow-y-auto font-notosans">
       <div className="mb-7">
         <div className="flex justify-between items-center px-8 py-2">
-          <p className="font-bold text-xl">Chats</p>
+          <p className="font-amaranth text-xl">Chats</p>
           <div className=" flex justify-center space-x-5 items-center h-full">
             <div>
               <MdOutlineAddComment className="rotate-180 w-6 h-6" />
@@ -118,7 +118,9 @@ function SettingBox() {
           />
         </div>
         <div>
-          <p className="text-lg ">{authuser.fullname}</p>
+          <p className="text-lg font-quicksand font-bold">
+            {authuser.fullname}
+          </p>
           <p className="text-gray-500 text-sm">
             {authuser.bio || "Hey there! I am using WhatsApp."}
           </p>
@@ -132,7 +134,7 @@ function SettingBox() {
         >
           <MdAccountCircle className="h-8 w-8" />
           <div className="w-full h-full flex flex-col justify-end space-y-4">
-            <p className="text-lg font-sans">Account</p>
+            <p className="">Account</p>
             <hr className="border-gray-600" />
           </div>
         </div>
@@ -154,7 +156,7 @@ function SettingBox() {
                   ✕
                 </button>
               </form>
-              <h3 className="font-bold text-lg">Update Profile Avatar</h3>
+              <h3 className="">Update Profile Avatar</h3>
               <div className="space-y-2 my-2 p-2">
                 <label className="input input-bordered flex items-center gap-2">
                   <svg
@@ -239,66 +241,64 @@ function SettingBox() {
         <div className="flex justify-start items-center cursor-pointer space-x-3 w-full h-14 pl-4  hover:bg-[#202C33]">
           <MdOutlinePrivacyTip className="h-8 w-8" />
           <div className="w-full h-full flex flex-col justify-end space-y-4">
-            <p className="text-lg font-sans">Privacy</p>
+            <p className="">Privacy</p>
             <hr className="border-gray-600" />
           </div>
         </div>
         <div className="flex justify-start items-center cursor-pointer space-x-3 w-full h-14 pl-4  hover:bg-[#202C33]">
           <BsChatSquareText className="h-7 w-7" />
           <div className="w-full h-full flex flex-col justify-end space-y-4">
-            <p className="text-lg font-sans">Chats</p>
+            <p className="">Chats</p>
             <hr className="border-gray-600" />
           </div>
         </div>
         <div className="flex justify-start items-center space-x-3 w-full h-14 pl-4 cursor-pointer hover:bg-[#202C33]">
           <IoNotificationsOutline className="h-8 w-8" />
           <div className="w-full h-full flex flex-col justify-end space-y-4">
-            <p className="text-lg font-sans">Notifications</p>
+            <p className="">Notifications</p>
             <hr className="border-gray-600" />
           </div>
         </div>
         <div className="flex cursor-pointer justify-start items-center space-x-3 w-full h-14 pl-4  hover:bg-[#202C33]">
           <IoHelpCircleOutline className="h-8 w-8" />
           <div className="w-full h-full flex flex-col justify-end space-y-4">
-            <p className="text-lg font-sans">Help</p>
+            <p className="">Help</p>
             <hr className="border-gray-600" />
           </div>
         </div>
         <div className="flex cursor-pointer justify-start items-center space-x-3 w-full h-14 pl-4  hover:bg-[#202C33]">
           <MdKeyboardAlt className="h-7 w-7" />
           <div className="w-full h-full flex flex-col justify-end space-y-4">
-            <p className="text-lg font-sans">Keyboard Shourcut</p>
+            <p className="">Keyboard Shourcut</p>
             <hr className="border-gray-600" />
           </div>
         </div>
         <div
-          onClick={() => document.getElementById("my_modal_2").showModal()}
+          onClick={() => document.getElementById("my_modal_LG").showModal()}
           className="flex justify-start items-center space-x-3 w-full h-14 pl-4  cursor-pointer hover:bg-[#202C33]"
         >
           <MdLogout className="h-8 w-8 text-[#F15C6D]" />
           <div className="w-full h-full flex flex-col justify-end space-y-4">
-            <p className="text-lg font-sans text-[#F15C6D]">Log Out</p>
+            <p className=" text-[#F15C6D]">Log Out</p>
             <hr className="border-gray-600" />
           </div>
         </div>
         <div>
-          <dialog id="my_modal_2" className="modal">
+          <dialog id="my_modal_LG" className="modal">
             <div className="modal-box">
-              <form method="dialog">
-                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-                  ✕
-                </button>
-              </form>
-              <h3 className="font-bold text-lg text-red-600">Log Out</h3>
-              <p className="text-lg m-2 text-center">
-                Are you sure want to Log Out?
+              <h3 className="font-bold text-lg">Log Out</h3>
+              <p className="py-4 text-xl font-spartan">
+                Are you sure you want to log out ?
               </p>
               <div className="modal-action">
-                <form method="dialog" className="flex justify-evenly w-full">
-                  <button className="btn">Cancel</button>
-                  <button onClick={() => logOut()} className="btn">
-                    Logout
-                  </button>
+                <button
+                  onClick={() => logOut()}
+                  className="btn btn-outline bg-red-600 text-white hover:bg-red-800"
+                >
+                  Log Out
+                </button>
+                <form method="dialog">
+                  <button className="btn">Close</button>
                 </form>
               </div>
             </div>

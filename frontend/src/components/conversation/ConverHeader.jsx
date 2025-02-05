@@ -8,13 +8,13 @@ function ConverHeader() {
   const { leftbarVisible, setLeftbarVisible } = leftbarVisibility();
   return (
     <div>
-      <div className="mb-4">
+      <div className="mb-4 font-notosans text-sm">
         <div className="flex justify-between items-center px-8 py-2">
           <VscThreeBars
             onClick={() => setLeftbarVisible(!leftbarVisible)}
             className="sm:hidden w-7 h-7 cursor-pointer hover:text-green-500 hover:scale-110"
           />
-          <p className="font-bold text-xl">Chats</p>
+          <p className="text-xl font-amaranth">Chats</p>
           <div className="flex justify-center space-x-5 items-center h-full">
             <div>
               <MdOutlineAddComment className=" w-6 h-6" />

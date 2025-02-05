@@ -1,19 +1,20 @@
+import { useEffect, useRef, useState } from "react";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { extractDate } from "../utils/dateModify";
+import { useNavigate } from "react-router-dom";
+import { useSocket } from "./../socket/Socket";
+
 import { SlOptionsVertical } from "react-icons/sl";
 import { MdOutlineEmojiEmotions } from "react-icons/md";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
 import { IoSendSharp } from "react-icons/io5";
-import Message from "./Message";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { useEffect, useRef, useState } from "react";
-import usersStore from "../zustand/store";
-import { extractDate } from "../utils/dateModify";
-import addImages from "../../assets/addImage.png";
-import { useNavigate } from "react-router-dom";
-import LoadingSpinner from "../utils/LoadingSpinner";
-import toast from "react-hot-toast";
-import { useSocket } from './../socket/Socket';
 
+import usersStore from "../zustand/store";
+import addImages from "../../assets/addImage.png";
+import LoadingSpinner from "../utils/LoadingSpinner";
+import Message from "./Message";
+import toast from "react-hot-toast";
 function MessageInbox() {
   const { onlineUsers } = useSocket();
   const [formData, setFormData] = useState({ text: "", img: "" });
@@ -30,7 +31,7 @@ function MessageInbox() {
       return;
     }
   }, [user, navigate]);
-  
+
   const { data: buble, isLoading } = useQuery({
     queryKey: ["buble", user._id],
     queryFn: async () => {
@@ -165,12 +166,16 @@ function MessageInbox() {
             />
           </div>
           <div>
-            <p className="hover:text-blue-500">{user.fullname}</p>
+            <p className="hover:text-blue-500 font-quicksand font-bold">
+              {user.fullname}
+            </p>
             <div className="text-sm text-gray-300 hover:text-blue-500">
               {isOnline ? (
                 "Online"
               ) : (
-                <p>{lastSeen ? `last seen ${lastSeen}` : "Offline"}</p>
+                <p className="font-spartan">
+                  {lastSeen ? `last seen ${lastSeen}` : "Offline"}
+                </p>
               )}
             </div>
           </div>

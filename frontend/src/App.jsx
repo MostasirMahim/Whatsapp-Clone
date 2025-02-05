@@ -1,12 +1,12 @@
+import { useQuery } from "@tanstack/react-query";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Conversation from "./components/conversation/Conversation";
-import { useQuery } from "@tanstack/react-query";
 import MessageInbox from "./components/inbox/MessageInbox";
 import Register from "./components/auth/Register";
 import LoadingSpinner from "./components/utils/LoadingSpinner";
 
 function App() {
-  const { data: authUser,isLoading} = useQuery({
+  const { data: authUser, isLoading } = useQuery({
     queryKey: ["authUser"],
     queryFn: async () => {
       try {
@@ -21,8 +21,8 @@ function App() {
     },
     retry: false,
   });
-  if(isLoading) {
-    return <LoadingSpinner />
+  if (isLoading) {
+    return <LoadingSpinner />;
   }
   return (
     <div>

@@ -1,10 +1,10 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import { TbMessage } from "react-icons/tb";
 import { HiOutlineStatusOnline } from "react-icons/hi";
 import { TbMessageCircle } from "react-icons/tb";
 import { MdOutlineGroups } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
 import { useQuery } from "@tanstack/react-query";
-import { useLocation, useNavigate } from "react-router-dom";
 
 function LeftSidebar() {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ function LeftSidebar() {
   if (!authUser) return null;
   return (
     <div>
-      <div className="flex flex-col justify-between h-screen w-full py-4 items-center text-[#AEBAC1] ">
+      <div className="flex flex-col justify-between h-screen font-notosans w-full py-4 items-center text-[#AEBAC1] ">
         <div className="space-y-4">
           <TbMessage
             className={`h-7 w-7 ${

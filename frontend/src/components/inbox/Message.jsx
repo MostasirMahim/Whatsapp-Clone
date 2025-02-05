@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useQuery } from "@tanstack/react-query";
 import usersStore from "../zustand/store";
 import { extractTime } from "../utils/dateModify";
@@ -31,16 +30,16 @@ function Message({ message }) {
   };
 
   return (
-    <div className={`chat ${chatClassName}  w-full h-full`}>
+    <div className={`chat ${chatClassName}  w-full h-full font-spartan`}>
       <div className="chat-image avatar">
         <div className="w-10 rounded-full">
           <img src={profilePic} alt="" />
         </div>
       </div>
       {message.text && message.img ? (
-        <div className={`flex flex-col ${
-          fromMe ? "items-end" : "items-start"
-        }`}>
+        <div
+          className={`flex flex-col ${fromMe ? "items-end" : "items-start"}`}
+        >
           <img
             onDoubleClick={() => downloadImage(message.img)}
             src={message.img}

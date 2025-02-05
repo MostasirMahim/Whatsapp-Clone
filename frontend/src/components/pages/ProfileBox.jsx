@@ -1,8 +1,8 @@
 import { MdEmojiEmotions } from "react-icons/md";
 import { MdOutlineDone } from "react-icons/md";
 import { MdAddPhotoAlternate } from "react-icons/md";
-
 import { IoPencil } from "react-icons/io5";
+
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
@@ -69,8 +69,8 @@ function ProfileBox() {
   if (!authuser) return null;
   return (
     <div>
-      <div className="w-full px-4 mt-4">
-        <p className="text-2xl font-semibold">Profile</p>
+      <div className="w-full px-4 mt-4 font-spartan">
+        <p className="text-2xl font-amaranth">Profile</p>
 
         <div className="flex justify-center items-center w-full relative">
           <img
@@ -129,7 +129,7 @@ function ProfileBox() {
         <p className="text-[#098069]">Your name</p>
         {editmodeName ? (
           <div className="flex justify-between items-center h-12">
-            <p>{authuser.fullname}</p>
+            <p className="font-amaranth">{authuser.fullname}</p>
             <div onClick={() => setEditmodeName(false)}>
               <IoPencil className="w-6 h-6 cursor-pointer" />
             </div>
@@ -158,7 +158,7 @@ function ProfileBox() {
             </div>
           </div>
         )}
-        <p className="text-sm text-gray-400">
+        <p className=" text-gray-400 font-spartan">
           This is not your username or PIN. This name will be visible to your
           WhatsApp contacts.
         </p>
@@ -167,7 +167,9 @@ function ProfileBox() {
         <p className="text-[#098069]">Bio</p>
         {editmodeBio ? (
           <div className="flex justify-between items-center h-12">
-            <p>{authuser.bio || "Hey there! I am using WhatsApp."}</p>
+            <p className="font-lato">
+              {authuser.bio || "Hey there! I am using WhatsApp."}
+            </p>
             <div
               onClick={() => {
                 setEditmodeBio(false);

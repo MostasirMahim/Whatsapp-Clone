@@ -3,7 +3,7 @@ import ConverInbox from "../conversation/ConverInbox";
 
 function ChatBox() {
   return (
-    <div className="w-full min-h-screen max-h-screen">
+    <div className="w-full h-screen max-h-screen overflow-y-auto">
       <ConverHeader />
       <ConverInbox />
     </div>

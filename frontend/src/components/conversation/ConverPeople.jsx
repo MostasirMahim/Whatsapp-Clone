@@ -1,9 +1,8 @@
-/* eslint-disable react/prop-types */
 import { useQuery } from "@tanstack/react-query";
-import usersStore from "../zustand/store";
 import { extractYear } from "../utils/dateModify";
 import { useNavigate, useParams } from "react-router-dom";
-import { useSocket } from './../socket/Socket';
+import { useSocket } from "./../socket/Socket";
+import usersStore from "../zustand/store";
 
 function ConverPeople({ user }) {
   const { setUser } = usersStore();
@@ -63,8 +62,8 @@ function ConverPeople({ user }) {
       </div>
       <div className=" flex justify-between items-center pb-2 w-full ">
         <div>
-          <p>{user.fullname}</p>
-          <p className="text-[#8696A0] text-sm">
+          <p className="font-spartan">{user.fullname}</p>
+          <p className="text-[#8696A0] text-sm font-amaranth">
             {lastText || "Send messages"}
           </p>
         </div>
