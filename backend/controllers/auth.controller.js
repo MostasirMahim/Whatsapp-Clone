@@ -2,6 +2,7 @@ import User from "../models/user.model.js";
 import genToken from "../utils/generateToken.js";
 import bcrypt from "bcryptjs";
 
+//Sign Up Function
 export const signupUser = async (req, res) => {
   try {
     const { fullname, username, gender, password } = req.body;
@@ -43,10 +44,11 @@ export const signupUser = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "error in Sign Up User" });
+    res.status(500).json({ error: "Error in Sign Up User" });
   }
 };
 
+//Log In Function
 export const login = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -79,14 +81,17 @@ export const login = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
+    res.status(500).json({ error: "Error in Sign Up User" });
   }
 };
 
+//Log Out Function
 export const logout = async (req, res) => {
   try {
     res.cookie("jwtmsg", "", { maxAge: 0 });
     res.status(201).json({ message: "Logout successfully" });
   } catch (error) {
     console.log(error);
+    res.status(500).json({ error: "Error in Sign Up User" });
   }
 };

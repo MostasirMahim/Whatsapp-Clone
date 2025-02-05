@@ -2,6 +2,7 @@ import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import { v2 as cloudinary } from "cloudinary";
 
+//Get Existing User For Show Inbox
 export const getFilteredUsers = async (req, res) => {
   try {
     const userID = req.user._id;
@@ -13,6 +14,8 @@ export const getFilteredUsers = async (req, res) => {
     throw new Error(error);
   }
 };
+
+//Get Own Data
 export const getMe = async (req, res) => {
   try {
     const userId = req.user._id;
@@ -24,6 +27,7 @@ export const getMe = async (req, res) => {
   }
 };
 
+//Update Own Profile
 export const updateUser = async (req, res) => {
   try {
     const userId = req.user._id;

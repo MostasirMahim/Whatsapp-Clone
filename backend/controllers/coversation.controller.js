@@ -3,6 +3,7 @@ import Message from "../models/message.model.js";
 import { v2 as cloudinary } from "cloudinary";
 import { getReceiverSocketId, io } from "../socket/socket.js";
 
+//1to1 Send Msg Function
 export const sendMessage = async (req, res) => {
   try {
     const { text } = req.body;
@@ -37,6 +38,8 @@ export const sendMessage = async (req, res) => {
     }
     await Promise.all([conversation.save(), newMessage.save()]);
 
+    //Get Reciver Socket ID With Db ID &
+    //Send NewMsg Via Action Name NewMsg .to(SocketID)
     const receiverSocketId = getReceiverSocketId(receiverId);
     if (receiverSocketId) {
       io.to(receiverSocketId).emit("newMessage", newMessage);
@@ -48,6 +51,7 @@ export const sendMessage = async (req, res) => {
   }
 };
 
+//Get Msg From Db
 export const getMessage = async (req, res) => {
   try {
     const { id: receiverId } = req.params;
@@ -65,6 +69,7 @@ export const getMessage = async (req, res) => {
   }
 };
 
+//Get Whole Conversaton From Db
 export const getCoversation = async (req, res) => {
   try {
     const { id: receiverId } = req.params;
